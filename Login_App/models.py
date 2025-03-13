@@ -1,8 +1,12 @@
 from django.db import models
 # for create a custom user and admin panel
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
-from django.utils.translation import ugettext_lazy
+from django.utils.translation import gettext_lazy as _
 
+
+#for creating one to one relationship
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class MyUserManager(BaseUserManager):
     # a custom  manager to deal the email as a unique identifier
@@ -32,15 +36,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, null=False)
 
     is_staff = models.BooleanField(
-        ugettext_lazy("staff status"),
+        _("staff status"),  
         default=False,
-        help_text=ugettext_lazy("Designates whether the user can log into this site.")
+        help_text=_("Designates whether the user can log into this site.")  # ✅ Updated
     )
 
     is_active = models.BooleanField(
-       ugettext_lazy("active"),
+        _("active"),  
         default=True,
-        help_text= ugettext_lazy("Designates whether this user should be treated as active. Unselect this instead of deleting accounts.")
+        help_text=_("Designates whether this user should be treated as active. Unselect this instead of deleting accounts.")  # ✅ Updated
     )
 
     USERNAME_FIELD = "email"
@@ -49,7 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email        
-    
+
     def get_full_name(self):
         return self.email
     
@@ -80,3 +84,12 @@ class Profile(models.Model):
              return False
             
         return True       
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, **kwargs):
+    instance.profile.save()    

@@ -130,3 +130,6 @@ LOGIN_URL='/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#custom user model
+AUTH_USER_MODEL='Login_App.User'
