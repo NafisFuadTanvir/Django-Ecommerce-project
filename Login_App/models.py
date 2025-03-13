@@ -22,8 +22,8 @@ class MyUserManager(BaseUserManager):
         return user
     
     def create_superuser(self, email, password, **extra_fields):
-        extra_fields.setdefault( ' is_staff', True)
-        extra_fields. setdefault( ' is_superuser', True)
+        extra_fields.setdefault( 'is_staff', True)
+        extra_fields. setdefault( 'is_superuser', True)
         extra_fields. setdefault( 'is_active', True)
         
         if extra_fields.get('is_staff') is not True:
@@ -73,7 +73,7 @@ class Profile(models.Model):
     date_joined = models.DateTimeField(auto_now_add=True) 
     
     def __str__(self):
-        return self.user.username + "'s Profile"
+        return self.username + "'s Profile"
 
     def is_fully_filled(self):
         field_names = [f.name for f in self._meta.get_fields()]
