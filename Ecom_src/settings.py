@@ -31,12 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'crispy_bootstrap4',
     #my apps
     'Login_App',
     'Shop_App',
 ]
 
-CRSIPY_TEMPLATE_PACK= 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 
 
@@ -124,7 +126,7 @@ MEDIA_ROOT=MEDIA_DIR
 MEDIA_URL='/media/'
 
 #login
-LOGIN_URL='/'
+LOGIN_URL='/account/login/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

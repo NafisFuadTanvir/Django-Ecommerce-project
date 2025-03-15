@@ -8,8 +8,8 @@ class ProfileForm(ModelForm):
         model= Profile
         exclude=('user',)
         
-class SignupForm(UserCreationForm):
+class SignUpForm(UserCreationForm):
     class Meta:
-        Model=User
+        model= User
         fields=('email','password1','password2')        
 
