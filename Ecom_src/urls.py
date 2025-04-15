@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Shop_App.urls')),
     path('account/',include('Login_App.urls')),
-    
+    path('order/',include('Order_App.urls')),
     
 ]
 
