@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_block %}
+    {{ product.name }} | My_Ecommerce
+{% endblock %}
+
+{% block body_block %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-md-6 mb-4">
+            <img src="/media/{{object.mainimage}}" class="img-fluid rounded shadow" alt="{{ product.name }}">
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+            <h2>{{ product.name }}</h2>
+            <p class="text-muted">Category: {{ product.category.name }}</p>
+
+            <h4 class="text-danger mt-3">
+                ৳ {{ product.price|floatformat:2 }}
+                {% if product.old_price > 0 %}
+                    <small class="text-muted"><del>৳ {{ product.old_price|floatformat:2 }}</del></small>
+                {% endif %}
+            </h4>
+
+            <p class="lead mt-4">{{ product.preview_text }}</p>
+
+            <form method="post" >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-lg mt-3">
+                    <i class="fa fa-shopping-cart"></i> Add to Cart
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Full Description -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4>Description</h4>
+            <p>{{ product.detail_text|linebreaks }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

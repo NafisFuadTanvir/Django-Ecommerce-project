@@ -16,7 +16,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user"></i> {{ request.user.username }}
+                        <i class="fa fa-user"></i> {{request.user.email}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'Login_App:profile' %}">Profile</a>
