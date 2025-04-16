@@ -27,12 +27,14 @@
 
             <p class="lead mt-4">{{ product.preview_text }}</p>
 
-            <form method="post" >
-                {% csrf_token %}
-                <button type="submit" class="btn btn-success btn-lg mt-3">
-                    <i class="fa fa-shopping-cart"></i> Add to Cart
-                </button>
-            </form>
+            
+                
+                <a href="{% url 'Order_App:add' pk=object.pk %}">
+                    <button type="submit" class="btn btn-success btn-lg mt-3">
+                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </a>
+            
         </div>
     </div>
 
