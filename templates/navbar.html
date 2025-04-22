@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
+                    <a class="nav-link" href="{% url 'Order_App:cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a>
                 </li>
 
                 {% if request.user.is_authenticated %}
