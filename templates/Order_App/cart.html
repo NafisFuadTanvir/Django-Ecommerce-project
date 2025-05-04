@@ -21,9 +21,9 @@
                 <td>{{ cart.item.name }}</td>
                 <td>
                     <div class="d-flex justify-content-center align-items-center gap-2">
-                        <a href="" class="text-dark" style="font-size: 20px; text-decoration: none;">−</a>
+                        <a href="{%url 'Order_App:decrease' pk=cart.item.pk %}" class="text-dark" style="font-size: 20px; text-decoration: none;">−</a>
                         <span style="padding: 0 10px; font-size: 16px;">{{ cart.quantity }}</span>
-                        <a href="" class="text-dark" style="font-size: 20px; text-decoration: none;">+</a>
+                        <a href="{%url 'Order_App:increase' pk=cart.item.pk %}" class="text-dark" style="font-size: 20px; text-decoration: none;">+</a>
                     </div>
                 </td>
                 <td>৳ {{ cart.get_total }}</td>
