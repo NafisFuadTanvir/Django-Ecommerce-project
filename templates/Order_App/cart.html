@@ -28,7 +28,7 @@
                 </td>
                 <td>৳ {{ cart.get_total }}</td>
                 <td>
-                    <a href="" class="btn btn-sm btn-danger">Remove</a>
+                    <a href="{% url 'Order_App:remove' pk=cart.item.pk %}" class="btn btn-sm btn-danger">Remove</a>
                 </td>
             </tr>
             {% endfor %}
